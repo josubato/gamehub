@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hub-bg: #0a0a0f;
+  --hub-surface: #111118;
+  --hub-card: #16161f;
+  --hub-border: #1e1e2e;
+  --hub-accent: #00ff87;
+  --hub-accent-dim: #00cc6a;
+  --hub-danger: #ff3b5c;
+  --hub-muted: #6b7280;
+  --hub-text: #e8e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--hub-bg);
+  color: var(--hub-text);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+textarea.hub-input::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 3px 0;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hub-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hub-muted);
+}
+
+/* Scanline overlay effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,135,0.01) 2px,
+    rgba(0,255,135,0.01) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@layer components {
+  .hub-card {
+    @apply bg-hub-card border border-hub-border rounded-xl;
+  }
+
+  .hub-btn {
+    @apply px-4 py-2 rounded-lg font-display font-semibold text-sm transition-all duration-200 cursor-pointer;
+  }
+
+  .hub-btn-primary {
+    @apply hub-btn bg-hub-accent text-hub-bg hover:bg-hub-accent-dim active:scale-95;
+  }
+
+  .hub-btn-ghost {
+    @apply hub-btn bg-transparent border border-hub-border text-hub-text hover:border-hub-accent hover:text-hub-accent;
+  }
+
+  .hub-btn-danger {
+    @apply hub-btn bg-transparent border border-hub-danger text-hub-danger hover:bg-hub-danger hover:text-white;
+  }
+
+  .hub-input {
+    @apply w-full bg-hub-surface border border-hub-border rounded-lg px-3 py-2 text-hub-text text-sm placeholder-hub-muted focus:outline-none focus:border-hub-accent transition-colors;
+  }
+
+  .green-nick {
+    @apply text-hub-accent font-display font-semibold;
+  }
+}
+
+/* Video player custom styles */
+video::-webkit-media-controls {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Glow effects */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(0,255,135,0.15);
+}
+
+.logo-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #00ff87, #00cc6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Auth required animations ───────────────────────────────────────────────*/
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px) rotate(-1deg); }
+  30% { transform: translateX(6px) rotate(1deg); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+
+@keyframes toast-in {
+  0% { transform: translateX(120%); opacity: 0; }
+  60% { transform: translateX(-8px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-out {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+/* Czerwony glow — dla like (niezalogowany) */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,59,92,0.4); }
+  50% { box-shadow: 0 0 20px rgba(255,59,92,0.8), 0 0 40px rgba(255,59,92,0.3); }
+}
+
+/* Zielony glow — dla komentarzy */
+@keyframes glow-pulse-green {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,255,135,0.4); }
+  50% { box-shadow: 0 0 20px rgba(0,255,135,0.8), 0 0 40px rgba(0,255,135,0.3); }
+}
+
+@keyframes shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.toast-enter {
+  animation: toast-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+  animation: toast-out 0.3s ease-in forwards;
+}

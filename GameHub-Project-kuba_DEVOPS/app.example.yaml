@@ -1,0 +1,19 @@
+# Copy to app.yaml and fill in real values before `gcloud app deploy`.
+# app.yaml is git-ignored - never commit real secrets.
+runtime: python311
+entrypoint: gunicorn -b :$PORT backend.main:app
+
+env_variables:
+  SECRET_KEY: "CHANGE-ME-random-string-min-32-chars"
+  FRONTEND_URL: "https://your-frontend-domain"
+  GCS_BUCKET: "your-project-id-videos"
+  SMTP_HOST: "smtp-relay.brevo.com"
+  SMTP_PORT: "587"
+  SMTP_USER: "your-smtp-login"
+  SMTP_PASSWORD: "your-smtp-password"
+  SMTP_FROM: "GameHub <noreply@your-domain>"
+  RECAPTCHA_SECRET: "your-recaptcha-secret-key"
+
+handlers:
+  - url: /.*
+    script: auto

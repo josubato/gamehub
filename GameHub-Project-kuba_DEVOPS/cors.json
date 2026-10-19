@@ -1,0 +1,12 @@
+[{
+  "origin": [
+    "https://gamehub-493009.web.app",
+    "https://gamehub-493009.firebaseapp.com",
+    "https://gam3hub.pl",
+    "https://www.gam3hub.pl",
+    "http://localhost:5173"
+  ],
+  "method": ["GET", "HEAD", "PUT"],
+  "responseHeader": ["Content-Type"],
+  "maxAgeSeconds": 3600
+}]

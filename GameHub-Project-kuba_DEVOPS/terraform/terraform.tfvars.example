@@ -1,0 +1,6 @@
+# Copy to terraform.tfvars and fill in the values:
+#   cp terraform.tfvars.example terraform.tfvars
+
+project_id       = "your-gcp-project-id"
+flask_secret_key = "CHANGE-ME-TO-A-RANDOM-STRING-AT-LEAST-32-CHARS"
+iap_user_email   = "you@example.com"

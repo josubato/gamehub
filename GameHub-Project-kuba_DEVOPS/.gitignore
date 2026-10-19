@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+*.egg-info/
+dist/
+*.key
+credentials.json
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Deployment config with real secrets (use app.example.yaml as template)
+/app.yaml
+
+# App Engine
+.gcloud/
+
+# Uploads (local dev only)
+backend/uploads/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+backend/app.yaml

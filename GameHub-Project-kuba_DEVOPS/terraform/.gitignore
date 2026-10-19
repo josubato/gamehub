@@ -1,0 +1,17 @@
+# Wrażliwe dane — NIGDY nie commituj!
+credentials.json
+terraform.tfvars
+*.tfvars
+!terraform.tfvars.example
+
+# Terraform wewnętrzne
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+
+# System
+.DS_Store
+Thumbs.db
